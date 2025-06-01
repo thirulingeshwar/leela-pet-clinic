@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leela Pet Clinic - Quality Care for Your Pets</title>
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+            --accent-blue: #4285f4;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+        }
+        
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-img {
+            height: 70px;
+            width: 70px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            text-align: left;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.3rem;
+        }
+        
+        nav {
+            background-color: var(--dark-blue);
+            padding: 0.7rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            opacity: 0.9;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        .hero-text h1 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .services {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent-blue);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .service-card {
+            background-color: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-card h3 {
+            color: var(--dark-blue);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .staff {
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+        
+        .staff-grid {
+            display: flex;
+            justify-content: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .doctor-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--primary-blue);
+        }
+        
+        .staff-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .staff-info h3 {
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .position {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery {
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            height: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 115, 232, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .contact {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+            margin-right: 1.5rem;
+        }
+        
+        .contact-info h3 {
+            color: var(--dark-blue);
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-tagline {
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 0.8rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.85rem;
+            margin: 0.3rem 0;
+        }
+        
+        .copyright a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                padding: 1.5rem;
+            }
+        
+            .hero-image {
+                height: 250px;
+            }
+            
+            nav li {
+                margin: 0 0.6rem;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .logo-img {
+                height: 60px;
+                width: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .tagline {
+                font-size: 0.9rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .logo-img {
+                height: 50px;
+                width: 50px;
+            }
+            
+            .staff-info h3 {
+                font-size: 1.3rem;
+            }
+            
+            .doctor-photo {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="Screenshot 2025-06-01 073225-modified.png" alt="Leela Pet Clinic Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1 class="logo">LEELA PET CLINIC</h1>
+                    <p class="tagline">Treating every pet with love and care</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#staff">Our Team</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <h1>Quality Veterinary Care for Your Beloved Pets</h1>
+                <p>At Leela Pet Clinic, we provide compassionate and professional veterinary services to ensure the health and happiness of your pets. Our experienced team is dedicated to offering the best possible care for all animals, big and small.</p>
+                <a href="#contact" class="btn">Book an Appointment</a>
+            </div>
+            <div class="hero-image">
+                <img src="IMG-20250531-WA0044.jpg" alt="Veterinarian examining a happy dog">
+            </div>
+        </section>
+        
+        <section id="services" class="services">
+            <h2 class="section-title">Services Offered</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>General Health Checkup</h3>
+                    <p>Comprehensive physical examinations to assess your pet's overall health and detect any potential issues early.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Vaccination & Deworming</h3>
+                    <p>Essential vaccinations and deworming treatments to protect your pet from diseases and parasites.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Treatment & Surgery</h3>
+                    <p>Advanced medical treatments and surgical procedures performed by our skilled veterinary team.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Pet Food & Accessories</h3>
+                    <p>High-quality pet food, supplements, and accessories to keep your pet healthy and happy.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Pet Lab</h3>
+                    <p>On-site laboratory for quick and accurate diagnostic testing.</p>
+                </div>
+                <div class="service-card">
+                    <h3>House Visits</h3>
+                    <p>Convenient veterinary care at your home by appointment.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Livestock Treatment</h3>
+                    <p>Comprehensive care for all types of livestock animals.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="staff" class="staff">
+            <h2 class="section-title">Our Veterinary Doctor</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <img src="IMG-20250531-WA0003.jpg" alt="Dr. M. Muthukumar, Head Veterinarian" class="doctor-photo">
+                    <div class="staff-info">
+                        <h3>Dr. M. Muthukumar</h3>
+                        <p class="position">Head Veterinarian</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="gallery">
+            <h2 class="section-title">Our Clinic in Action</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="IMG-20250531-WA0015.jpg" alt="Veterinarian examining a cat">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250531-WA0011.jpg" alt="Treatment for a small dog">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250531-WA0037.jpg" alt="Clinic facilities">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250531-WA0053.jpg" alt="Happy dog after treatment">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250531-WA0057.jpg" alt="Farm animal care">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250601-WA0006.jpg" alt="Pet food and accessories">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250601-WA0003.jpg" alt="Clinic interior">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG-20250531-WA0038.jpg" alt="Veterinary equipment">
+                </div>
+                <div class="gallery-item">
+                    <img src="Screenshot 2025-06-01 073225-modified.png" alt="Leela Pet Clinic logo">
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Address</h3>
+                    <p>23E, TPK Main Road, Pykara, Madurai - 625 004</p>
+                    
+                    <h3>Outpatient Timing</h3>
+                    <p>5.00 PM to 9.00 PM</p>
+                    
+                    <h3>For Appointment</h3>
+                    <p>Call: <a href="tel:9952669825" style="color: var(--primary-blue); text-decoration: none; font-weight: 500;">99526 69825</a></p>
+                    
+                    <h3>Email</h3>
+                    <p>leelapetsclinic@gmail.com</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">LEELA PET CLINIC</div>
+            <p class="footer-tagline">Treating every pet with love and care</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#staff">Our Team</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2025 Leela Pet Clinic. All rights reserved.</p>
+            <p class="copyright">Website designed by <a href="https://hmi-proj.vercel.app/" target="_blank">HMI</a></p>
+        </div>
+    </footer>
+</body>
+</html>
